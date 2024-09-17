@@ -19,6 +19,10 @@ function ProductTable() {
             <Table.Column>Football</Table.Column>
             <Table.Column>$49.99</Table.Column>
           </Table.Row>
+          <Table.Row>
+            <Table.Column>Tennis</Table.Column>
+            <Table.Column>$49.99</Table.Column>
+          </Table.Row>
         </Table.TBody>
       </Table.TableContainer>
     </div>
