@@ -1,6 +1,11 @@
 import React from "react";
 import Table from "./Table";
-function ProductTable() {
+import ProductsItem from "./products/ProductsItem";
+import ProductCategoryHeader from "./products/ProductCategoryHeader";
+const ProductTable = ({ headers, products }) => {
+  const sportingGoods = products.filter((product) => product.type === 1);
+  const electronics = products.filter((product) => product.type === 2);
+
   return (
     <div>
       <Table.TableContainer>
@@ -12,21 +17,38 @@ function ProductTable() {
         </Table.Thead>
 
         <Table.TBody>
-          <Table.Row>
-            <Table.ColumnHeader colspan="2">Sports Goods</Table.ColumnHeader>
-          </Table.Row>
-          <Table.Row>
-            <Table.Column>Football</Table.Column>
-            <Table.Column>$49.99</Table.Column>
-          </Table.Row>
-          <Table.Row>
-            <Table.Column>Tennis</Table.Column>
-            <Table.Column>$1234.99</Table.Column>
-          </Table.Row>
+          <ProductCategoryHeader text={headers[0]} />
+
+          {sportingGoods.map((sportingGood) => (
+            <ProductsItem
+              key={`${sportingGood.type}-${sportingGood.id}`}
+              name={sportingGood.name}
+              price={sportingGood.price}
+            />
+          ))}
+
+          <ProductCategoryHeader text={headers[1]} />
+          {electronics.map(({ id, name, price, type }) => (
+            <ProductsItem key={`${type}-${id}`} name={name} price={price} />
+          ))}
         </Table.TBody>
+
+        <Table.TFoot>
+          <Table.row>
+            <Table.ColumnHeader>TOTAL</Table.ColumnHeader>
+            <Table.Column>
+              $
+              {products.reduce(
+                (previousValue, currentValue) =>
+                  previousValue + currentValue.price,
+                0
+              )}
+            </Table.Column>
+          </Table.row>
+        </Table.TFoot>
       </Table.TableContainer>
     </div>
   );
-}
+};
 
 export default ProductTable;
