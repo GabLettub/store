@@ -34,7 +34,7 @@ const ProductTable = ({ headers, products }) => {
         </Table.TBody>
 
         <Table.TFoot>
-          <Table.row>
+          <Table.Row>
             <Table.ColumnHeader>TOTAL</Table.ColumnHeader>
             <Table.Column>
               $
@@ -44,7 +44,7 @@ const ProductTable = ({ headers, products }) => {
                 0
               )}
             </Table.Column>
-          </Table.row>
+          </Table.Row>
         </Table.TFoot>
       </Table.TableContainer>
     </div>
