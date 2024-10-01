@@ -17,7 +17,9 @@ const ProductTable = ({ headers, products }) => {
         </Table.Thead>
 
         <Table.TBody>
-          <ProductCategoryHeader text={headers[0]} />
+          {sportingGoods.length > 0 && (
+            <ProductCategoryHeader text={headers[0]} />
+          )}
 
           {sportingGoods.map((sportingGood) => (
             <ProductsItem
@@ -26,8 +28,9 @@ const ProductTable = ({ headers, products }) => {
               price={sportingGood.price}
             />
           ))}
-
-          <ProductCategoryHeader text={headers[1]} />
+          {sportingGoods.length > 0 && (
+            <ProductCategoryHeader text={headers[1]} />
+          )}
           {electronics.map(({ id, name, price, type }) => (
             <ProductsItem key={`${type}-${id}`} name={name} price={price} />
           ))}
