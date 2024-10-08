@@ -5,19 +5,20 @@ const ProductsItem = (props) => {
   const { value, setProducts } = props;
   const [number, setNumber] = useState(1);
 
-  if (value.stock - number < 0 && operation === "-") {
-    alert(`${value.name} stock should't be less than zero`);
-    return;
-  }
 
   const stockAction = (e) => {
     const operation = e.target.textContent;
     const productId = value.id;
 
+    if (value.stock - number < 0 && operation === "-") {
+      alert(`${value.name} stock should't be less than zero`);
+      return;
+    }
+
     setProducts((prevValue) => {
       const products = prevValue;
 
-      //Manipulate the stocks
+      //Manipulate the stocks immutably
       let stock = value.stock;
 
       if (operation === "+") {
@@ -39,7 +40,11 @@ const ProductsItem = (props) => {
 
   return (
     <Table.Row>
-      <Table.Column>{value.name}</Table.Column>
+      <Table.Column>
+        <span style={{ textDecoration: value.stock === 0 ? "line-through" : "none" }}>
+          {value.name}
+        </span>
+      </Table.Column>
       <Table.Column>
         ${value.price > 0 ? value.price.toFixed(2) : 0}
       </Table.Column>
