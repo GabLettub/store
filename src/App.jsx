@@ -4,7 +4,7 @@ import FilterProductTable from "./components/FilterProductTable";
 import ProductTable from "./components/ProductTable";
 import SearchBar from "./components/SearchBar";
 
-const products = [
+const productList = [
   //sporting goods
   { id: 1, name: "Tennis", price: 99.9, type: 1, stock: 100 },
   { id: 2, name: "Badminton", price: 99.9, type: 1, stock: 400 },
@@ -19,6 +19,7 @@ const products = [
 const headers = ["Sporting Goods", "Electronics"];
 
 function App() {
+  const [products, setProducts] = useState(productList);
   const [query, setQuery] = useState("");
   const [stockChecked, setStockChecked] = useState(false);
 
@@ -43,6 +44,7 @@ function App() {
       <ProductTable
         headers={headers}
         products={filteredProducts}
+        setProducts={setProducts}
       ></ProductTable>
     </FilterProductTable>
   );
