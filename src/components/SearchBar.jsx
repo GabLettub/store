@@ -8,6 +8,7 @@ const SearchBar = ({ query, setQuery, stockChecked, setStockChecked }) => {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Type here"
+        className="border-2 rounded-lg p-2 border-pink-300"
       />
       <div>
         <input
