@@ -1,8 +1,9 @@
 import React from "react";
 import Table from "./Table";
-import ProductsItem from "./products/ProductsItem";
-import ProductCategoryHeader from "./products/ProductCategoryHeader";
-const ProductTable = ({ headers, products }) => {
+import ProductsItem from "./students/StudentsItem";
+import ProductCategoryHeader from "./students/StudentsCategoryHeader";
+
+const ProductTable = ({ headers, products, setProducts }) => {
   const sportingGoods = products.filter((product) => product.type === 1);
   const electronics = products.filter((product) => product.type === 2);
 
@@ -11,8 +12,13 @@ const ProductTable = ({ headers, products }) => {
       <Table.TableContainer>
         <Table.Thead>
           <Table.Row>
-            <Table.ColumnHeader>Name</Table.ColumnHeader>
-            <Table.ColumnHeader>Price</Table.ColumnHeader>
+            <Table.ColumnHeader>Last Name</Table.ColumnHeader>
+            <Table.ColumnHeader>First Name</Table.ColumnHeader>
+            <Table.ColumnHeader>Course</Table.ColumnHeader>
+            <Table.ColumnHeader>Birthdate</Table.ColumnHeader>
+            <Table.ColumnHeader>Age</Table.ColumnHeader>
+
+
           </Table.Row>
         </Table.Thead>
 
@@ -24,15 +30,17 @@ const ProductTable = ({ headers, products }) => {
           {sportingGoods.map((sportingGood) => (
             <ProductsItem
               key={`${sportingGood.type}-${sportingGood.id}`}
-              name={sportingGood.name}
-              price={sportingGood.price}
+              value={sportingGood} // Pass the entire object as `value`
+              setProducts={setProducts} //included so that  producItem can manipulate the data of productList
             />
           ))}
-          {sportingGoods.length > 0 && (
-            <ProductCategoryHeader text={headers[1]} />
-          )}
-          {electronics.map(({ id, name, price, type }) => (
-            <ProductsItem key={`${type}-${id}`} name={name} price={price} />
+
+          {electronics.map((electronic) => (
+            <ProductsItem
+              key={`${electronic.type}-${electronic.id}`}
+              value={electronic} // Pass the entire object as `value`
+              setProducts={setProducts} //included so that  producItem can manipulate the data of productList
+            />
           ))}
         </Table.TBody>
 
