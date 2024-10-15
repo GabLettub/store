@@ -1,7 +1,7 @@
 import React from "react";
 import Table from "./Table";
-import ProductsItem from "./students/StudentsItem";
-import ProductCategoryHeader from "./students/StudentsCategoryHeader";
+import ProductsItem from "./students/ProductsItem";
+import ProductCategoryHeader from "./students/ProductsCategoryHeader";
 
 const ProductTable = ({ headers, products, setProducts }) => {
   const sportingGoods = products.filter((product) => product.type === 1);
@@ -17,8 +17,6 @@ const ProductTable = ({ headers, products, setProducts }) => {
             <Table.ColumnHeader>Course</Table.ColumnHeader>
             <Table.ColumnHeader>Birthdate</Table.ColumnHeader>
             <Table.ColumnHeader>Age</Table.ColumnHeader>
-
-
           </Table.Row>
         </Table.Thead>
 
